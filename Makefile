@@ -12,11 +12,14 @@ O_DIR = obj
 
 EXTENSIONS = $(addprefix $(I_DIR)/,$(EXT))
 
-EXT = 
+EXT =   CustomException.hpp \
+        IOperand.hpp \
+        Operand.hpp
 
 HEADERS =-I$(I_DIR)
 
-SOURCES = main.cpp
+SOURCES =   main.cpp \
+            CustomException.hpp
 
 
 SRCS = $(addprefix $(S_DIR)/,$(SOURCES))
