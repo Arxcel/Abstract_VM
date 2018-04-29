@@ -99,8 +99,13 @@ private:
 		return !overflow;
 	}
 	Operand(): _value(0), _type(Int8), _precision(0),_str(""){}
-	Operand(Operand const &){};
-	Operand &operator=(Operand const &s){ return *this;};
+	Operand(Operand const &s){
+		static_cast<void>(s);
+	};
+	Operand &operator=(Operand const &s){
+		static_cast<void>(s);
+		return *this;
+	};
 	T				_value;
 	eOperandType	_type;
 	int 			_precision;

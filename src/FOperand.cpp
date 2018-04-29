@@ -5,11 +5,18 @@
 #include "FOperand.hpp"
 
 FOperand::FOperand() {
-
+	typedef std::pair<eOperandType, IOperand const* (FOperand::*)(std::string const &v) const> mapEl;
+	_creationMap.insert(mapEl(Int8, &FOperand::createInt8));
+	_creationMap.insert(mapEl(Int16, &FOperand::createInt16));
+	_creationMap.insert(mapEl(Int32, &FOperand::createInt32));
+	_creationMap.insert(mapEl(Float, &FOperand::createFloat));
+	_creationMap.insert(mapEl(Double, &FOperand::createDouble));
 }
+
 FOperand::FOperand(FOperand const &r){
 	static_cast<void>(r);
 }
+
 FOperand &FOperand::operator=(FOperand const &r){
 	static_cast<void>(r);
 	return *this;
@@ -18,12 +25,10 @@ FOperand::~FOperand(){
 
 }
 
-IOperand const *FOperand::createOperand(eOperandType const &t, std::string val) const{
-//
+IOperand const *FOperand::createOperand(eOperandType const &t, std::string val) const {
 //	IOperand const* (FOperand::*f)(std::string const &v) const;
-//	f = _creationMap.at(t);
-//	return ((*this.*f)(val));
-	return createInt8("50");
+	auto f = _creationMap.at(t);
+	return ((*this.*f)(val));
 }
 
 IOperand const *FOperand::createInt8(std::string const &v) const {
