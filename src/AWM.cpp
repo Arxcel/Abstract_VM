@@ -6,7 +6,6 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include "CustomException.hpp"
 AWM::AWM(){};
 AWM::~AWM(){};
 AWM::AWM(AWM const &){};
@@ -16,12 +15,31 @@ _filePath(fP), _errPath(eP), _errToFile(eTF), _readFromFile(rFF) {};
 
 void AWM::start() {
 	std::string instructions;
+	instructions = readInstructions();
+	parseInstructions(instructions);
+};
+
+void AWM::parseInstructions(std::string const &instructions) {
+	std::stringstream ss(instructions);
+	std::string line;
+	while (getline(ss, line)){
+		std::stringstream strS(line);
+		std::string word;
+		while (getline(strS, word, ' ')) {
+				std::cout << word << std::endl;
+		}
+	}
+};
+
+std::string AWM::readInstructions() {
+	std::string instructions;
 	if (_readFromFile && !_errToFile) {
 		instructions = readFromFile(_filePath);
 	} else {
 		instructions = readFromStdI();
 	}
-};
+	return instructions;
+}
 
 std::string AWM::readFromFile(std::string const &path) const {
 	std::string line;

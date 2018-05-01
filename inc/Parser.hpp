@@ -7,7 +7,13 @@
 
 
 class Parser {
+public:
+	Parser();
+	~Parser();
 
+private:
+	Parser(Parser const &);
+	Parser &operator=(Parser const &);
 };
 
 
