@@ -5,6 +5,8 @@
 #ifndef LEXER_HPP
 #define LEXER_HPP
 #include <string>
+#include <regex>
+#include <vector>
 
 class Lexer {
 public:
@@ -14,6 +16,7 @@ public:
 private:
 	Lexer(Lexer const &);
 	Lexer &operator=(Lexer const &);
+	std::vector<std::regex> _patterns;
 };
 
 

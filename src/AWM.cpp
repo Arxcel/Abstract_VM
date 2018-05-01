@@ -18,12 +18,12 @@ _filePath(fP), _errPath(eP), _errToFile(eTF), _readFromFile(rFF) {
 
 void AWM::start() {
 	std::string instructions;
-	if (_readFromFile && !_errToFile)
-	{
+	if (_readFromFile && !_errToFile) {
 		instructions = readFromFile(_filePath);
 	} else {
 		instructions = readFromStdI();
 	}
+//	std::cout << "All instructions." << std::endl << instructions << std::endl;
 }
 
 std::string AWM::readFromFile(std::string const &path) const
@@ -50,7 +50,7 @@ std::string AWM::readFromStdI() const
 	std::stringstream ss;
 	while(true) {
 		getline(std::cin, line);
-		if (line.find(";;") == std::string::npos)
+		if (line.find(";;") != std::string::npos)
 			break ;
 		ss << _lexer.validateLine(line) << std::endl;
 	}
