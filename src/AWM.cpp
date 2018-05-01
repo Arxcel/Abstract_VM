@@ -12,9 +12,7 @@ AWM::~AWM(){};
 AWM::AWM(AWM const &){};
 AWM &AWM::operator=(AWM const &){ return *this;};
 AWM::AWM(bool rFF, bool eTF, std::string const &eP, std::string const &fP):
-_filePath(fP), _errPath(eP), _errToFile(eTF), _readFromFile(rFF) {
-
-}
+_filePath(fP), _errPath(eP), _errToFile(eTF), _readFromFile(rFF) {};
 
 void AWM::start() {
 	std::string instructions;
@@ -23,11 +21,9 @@ void AWM::start() {
 	} else {
 		instructions = readFromStdI();
 	}
-//	std::cout << "All instructions." << std::endl << instructions << std::endl;
-}
+};
 
-std::string AWM::readFromFile(std::string const &path) const
-{
+std::string AWM::readFromFile(std::string const &path) const {
 	std::string line;
 	std::stringstream ss;
 	std::ifstream f(path);
@@ -37,15 +33,12 @@ std::string AWM::readFromFile(std::string const &path) const
 		}
 		f.close();
 	} else {
-		std::string err("Error: ");
-		err += std::strerror(errno);
-		throw CustomException(err);
+		throw CustomException(std::string("Error: ") + std::strerror(errno));
 	}
 	return ss.str();
-}
+};
 
-std::string AWM::readFromStdI() const
-{
+std::string AWM::readFromStdI() const {
 	std::string line;
 	std::stringstream ss;
 	while(true) {
@@ -55,4 +48,4 @@ std::string AWM::readFromStdI() const
 		ss << _lexer.validateLine(line) << std::endl;
 	}
 	return ss.str();
-}
+};
