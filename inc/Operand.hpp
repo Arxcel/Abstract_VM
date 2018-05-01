@@ -11,26 +11,26 @@
 #include <climits>
 #include <cmath>
 #include "CustomException.hpp"
-#include "IOperand.hpp"
+#include "FOperand.hpp"
 
 template <typename T>
 class Operand: public IOperand
 {
 public:
-	Operand(std::string const &val, eOperandType t, int precision): _type(t), _precision(precision) {
+	Operand(std::string const &val, eOperandType t, int precision, FOperand const *fop): _type(t), _precision(precision), _fop(fop) {
 		std::stringstream ss;
 		if (t < Float) {
 			long long v = std::stoll(val);
-			if (isOverflow(_type, v)) {
-				throw CustomException("Overflow or underflow!");
+			if (isOverflow<long long>(_type, v)) {
+				throw CustomException("Constructor. Int overflow or underflow!");
 			}
 			_value = static_cast<T>(v);
 			ss << std::setprecision(precision) << v;
 			_str = ss.str();
 		} else {
 			long double v = std::stod(val);
-			if (isOverflow(_type, v)) {
-				throw CustomException("Overflow or underflow!");
+			if (isOverflow<long double>(_type, v)) {
+				throw CustomException("Constructor. Float/double overflow or underflow!");
 			}
 			_value = static_cast<T>(v);
 			ss << std::setprecision(precision) << v;
@@ -48,29 +48,117 @@ public:
 		int				p;
 		getTypePrec(t, p, rhs);
 		std::stringstream ss;
-		if (t < Float)
-		{
+		if (t < Float) {
 			long long res = std::stoll(_str) + std::stoll(rhs.toString());
 			if (isOverflow(_type, res)) {
-				throw CustomException("Overflow or underflow!");
+				throw CustomException("Sum. Int overflow or underflow!");
 			}
 			ss << std::setprecision(p) << res;
-		}
-		else
-		{
+		} else {
 			long double res = std::stod(_str) + std::stod(rhs.toString());
 			if (isOverflow(_type, res)) {
-				throw CustomException("Overflow or underflow!");
+				throw CustomException("Sum. Float/double overflow or underflow!");
 			}
 			ss << std::setprecision(p) << res;
 		}
-		return this;
-		//create new instance t, p, ss.str()
+		return _fop->createOperand(_type, ss.str());
 	};
-//	virtual IOperand const * operator-( IOperand const & rhs ) const = 0; // Difference
-//	virtual IOperand const * operator*( IOperand const & rhs ) const = 0; // Product
-//	virtual IOperand const * operator/( IOperand const & rhs ) const = 0; // Quotient
-//	virtual IOperand const * operator%( IOperand const & rhs ) const = 0; // Modulo
+	IOperand const * operator-( IOperand const & rhs ) const {
+		eOperandType	t;
+		int				p;
+		getTypePrec(t, p, rhs);
+		std::stringstream ss;
+		if (t < Float) {
+			long long res = std::stoll(_str) - std::stoll(rhs.toString());
+			if (isOverflow(_type, res)) {
+				throw CustomException("Sub. Int overflow or underflow!");
+			}
+			ss << std::setprecision(p) << res;
+		} else {
+			long double res = std::stod(_str) - std::stod(rhs.toString());
+			if (isOverflow(_type, res)) {
+				throw CustomException("Sub. Float/double overflow or underflow!");
+			}
+			ss << std::setprecision(p) << res;
+		}
+		return _fop->createOperand(_type, ss.str());
+	};
+	IOperand const * operator*( IOperand const & rhs ) const {
+		eOperandType	t;
+		int				p;
+		getTypePrec(t, p, rhs);
+		std::stringstream ss;
+		if (t < Float) {
+			long long res = std::stoll(_str) * std::stoll(rhs.toString());
+			if (isOverflow(_type, res)) {
+				throw CustomException("Multiply. Int overflow or underflow!");
+			}
+			ss << std::setprecision(p) << res;
+		} else {
+			long double res = std::stod(_str) * std::stod(rhs.toString());
+			if (isOverflow(_type, res)) {
+				throw CustomException("Multiply. Float/double overflow or underflow!");
+			}
+			ss << std::setprecision(p) << res;
+		}
+		return _fop->createOperand(_type, ss.str());
+	};
+	IOperand const * operator/( IOperand const & rhs ) const{
+		eOperandType	t;
+		int				p;
+		getTypePrec(t, p, rhs);
+		std::stringstream ss;
+		if (t < Float) {
+			long long div = std::stoll(rhs.toString());
+			if (div == 0) {
+				throw CustomException("Division. Int. Division by zero exception.");
+			}
+			long long res = std::stoll(_str) / div;
+			if (isOverflow(_type, res)) {
+				throw CustomException("Division. Int overflow or underflow!");
+			}
+			ss << std::setprecision(p) << res;
+		} else {
+			long double div = std::stod(rhs.toString());
+			if (div == 0) {
+				throw CustomException("Division. Float/double. Division by zero exception.");
+			}
+			long double res = std::stod(_str) / div;
+			if (isOverflow(_type, res)) {
+				throw CustomException("Division. Float/double overflow or underflow!");
+			}
+			ss << std::setprecision(p) << res;
+		}
+		return _fop->createOperand(_type, ss.str());
+	};
+	IOperand const * operator%( IOperand const & rhs ) const {
+		eOperandType	t;
+		int				p;
+		getTypePrec(t, p, rhs);
+		std::stringstream ss;
+		if (t < Float) {
+			long long div = std::stoll(rhs.toString());
+			if (div == 0) {
+				throw CustomException("Modulo. Int. Division by zero exception.");
+			}
+			long long res = std::stoll(_str) % div;
+			if (isOverflow(_type, res)) {
+				throw CustomException("Modulo. Int overflow or underflow!");
+			}
+			ss << std::setprecision(p) << res;
+		} else {
+			long double div = std::stod(rhs.toString());
+			if (div == 0) {
+				throw CustomException("Modulo. Float/double. Division by zero exception.");
+			}
+			long double res = std::fmod(std::stod(_str), div);
+			if (isOverflow(_type, res)) {
+				throw CustomException("Modulo. Float/double overflow or underflow!");
+			}
+			ss << std::setprecision(p) << res;
+		}
+		return _fop->createOperand(_type, ss.str());
+	}
 	std::string const & toString() const {
 		return _str;
 	};
@@ -90,9 +178,9 @@ private:
 		} else if (type == Int32) {
 			overflow =  value >= INT32_MIN && value <= INT32_MAX;
 		} else if (type == Float) {
-			overflow = value >= FLT_MIN && value <= FLT_MAX;
+			overflow = value >= -FLT_MAX && value <= FLT_MAX;
 		} else if (type == Double) {
-			overflow = value >= DBL_MIN && value <= DBL_MAX;
+			overflow = value >= -DBL_MAX && value <= DBL_MAX;
 		} else {
 			throw CustomException("Not valid enum type!");
 		}
@@ -109,6 +197,7 @@ private:
 	T				_value;
 	eOperandType	_type;
 	int 			_precision;
+	FOperand const	*_fop;
 	std::string		_str;
 };
 

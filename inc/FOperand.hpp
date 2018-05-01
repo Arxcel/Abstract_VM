@@ -5,10 +5,9 @@
 #ifndef FOPERAND_HPP
 #define FOPERAND_HPP
 
-#include "Operand.hpp"
+#include "IOperand.hpp"
 #include <map>
 
-//class Operand;
 class FOperand {
 public:
 	FOperand();

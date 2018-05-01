@@ -8,104 +8,120 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug"/>
+				<Option working_dir="/Users/vkozlov/Documents/avm/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug"/>
+				<Option working_dir="/Users/vkozlov/Documents/avm/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug"/>
+				<Option working_dir="/Users/vkozlov/Documents/avm/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Abstract_VM">
-				<Option output="/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Abstract_VM" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug"/>
+				<Option output="/Users/vkozlov/Documents/avm/cmake-build-debug/Abstract_VM" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/vkozlov/Documents/avm/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/arxcel/Documents/projects/Abstract_VM/inc"/>
+					<Add directory="/Users/vkozlov/Documents/avm/inc"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
-					<Add directory="/usr/include"/>
 					<Add directory="/System/Library/Frameworks"/>
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 Abstract_VM"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 Abstract_VM"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Abstract_VM/fast">
-				<Option output="/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Abstract_VM" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug"/>
+				<Option output="/Users/vkozlov/Documents/avm/cmake-build-debug/Abstract_VM" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/vkozlov/Documents/avm/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/arxcel/Documents/projects/Abstract_VM/inc"/>
+					<Add directory="/Users/vkozlov/Documents/avm/inc"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
-					<Add directory="/usr/include"/>
 					<Add directory="/System/Library/Frameworks"/>
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 Abstract_VM/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 Abstract_VM/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/vkozlov/Documents/avm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/arxcel/Documents/projects/Abstract_VM/inc/CustomException.hpp">
+		<Unit filename="/Users/vkozlov/Documents/avm/inc/AWM.hpp">
 			<Option target="Abstract_VM"/>
 		</Unit>
-		<Unit filename="/Users/arxcel/Documents/projects/Abstract_VM/inc/FOperand.hpp">
+		<Unit filename="/Users/vkozlov/Documents/avm/inc/CustomException.hpp">
 			<Option target="Abstract_VM"/>
 		</Unit>
-		<Unit filename="/Users/arxcel/Documents/projects/Abstract_VM/inc/IOperand.hpp">
+		<Unit filename="/Users/vkozlov/Documents/avm/inc/FOperand.hpp">
 			<Option target="Abstract_VM"/>
 		</Unit>
-		<Unit filename="/Users/arxcel/Documents/projects/Abstract_VM/inc/Operand.hpp">
+		<Unit filename="/Users/vkozlov/Documents/avm/inc/IOperand.hpp">
 			<Option target="Abstract_VM"/>
 		</Unit>
-		<Unit filename="/Users/arxcel/Documents/projects/Abstract_VM/src/CustomException.cpp">
+		<Unit filename="/Users/vkozlov/Documents/avm/inc/Lexer.hpp">
 			<Option target="Abstract_VM"/>
 		</Unit>
-		<Unit filename="/Users/arxcel/Documents/projects/Abstract_VM/src/FOperand.cpp">
+		<Unit filename="/Users/vkozlov/Documents/avm/inc/Operand.hpp">
 			<Option target="Abstract_VM"/>
 		</Unit>
-		<Unit filename="/Users/arxcel/Documents/projects/Abstract_VM/src/main.cpp">
+		<Unit filename="/Users/vkozlov/Documents/avm/inc/Parser.hpp">
 			<Option target="Abstract_VM"/>
 		</Unit>
-		<Unit filename="/Users/arxcel/Documents/projects/Abstract_VM/CMakeLists.txt">
+		<Unit filename="/Users/vkozlov/Documents/avm/src/AWM.cpp">
+			<Option target="Abstract_VM"/>
+		</Unit>
+		<Unit filename="/Users/vkozlov/Documents/avm/src/CustomException.cpp">
+			<Option target="Abstract_VM"/>
+		</Unit>
+		<Unit filename="/Users/vkozlov/Documents/avm/src/FOperand.cpp">
+			<Option target="Abstract_VM"/>
+		</Unit>
+		<Unit filename="/Users/vkozlov/Documents/avm/src/Lexer.cpp">
+			<Option target="Abstract_VM"/>
+		</Unit>
+		<Unit filename="/Users/vkozlov/Documents/avm/src/Parser.cpp">
+			<Option target="Abstract_VM"/>
+		</Unit>
+		<Unit filename="/Users/vkozlov/Documents/avm/src/main.cpp">
+			<Option target="Abstract_VM"/>
+		</Unit>
+		<Unit filename="/Users/vkozlov/Documents/avm/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

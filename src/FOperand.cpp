@@ -3,6 +3,7 @@
 //
 
 #include "FOperand.hpp"
+#include "Operand.hpp"
 
 FOperand::FOperand() {
 	typedef std::pair<eOperandType, IOperand const* (FOperand::*)(std::string const &v) const> mapEl;
@@ -26,23 +27,22 @@ FOperand::~FOperand(){
 }
 
 IOperand const *FOperand::createOperand(eOperandType const &t, std::string val) const {
-//	IOperand const* (FOperand::*f)(std::string const &v) const;
 	auto f = _creationMap.at(t);
 	return ((*this.*f)(val));
 }
 
 IOperand const *FOperand::createInt8(std::string const &v) const {
-	return new Operand<char>(v, Int8, 0);
+	return new Operand<char>(v, Int8, 0, this);
 }
 IOperand const *FOperand::createInt16(std::string const &v) const {
-	return new Operand<short int>(v, Int16, 0);
+	return new Operand<short int>(v, Int16, 0, this);
 }
 IOperand const *FOperand::createInt32(std::string const &v) const {
-	return new Operand<int>(v, Int32, 0);
+	return new Operand<int>(v, Int32, 0, this);
 }
 IOperand const *FOperand::createFloat(std::string const &v) const {
-	return new Operand<float>(v, Float, 7);
+	return new Operand<float>(v, Float, 7, this);
 }
 IOperand const *FOperand::createDouble(std::string const &v) const {
-	return new Operand<double>(v, Double, 14);
+	return new Operand<double>(v, Double, 14, this);
 }

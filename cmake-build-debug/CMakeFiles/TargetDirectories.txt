@@ -1,3 +1,3 @@
-/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir
+/Users/vkozlov/Documents/avm/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/vkozlov/Documents/avm/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/vkozlov/Documents/avm/cmake-build-debug/CMakeFiles/Abstract_VM.dir

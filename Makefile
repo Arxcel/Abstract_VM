@@ -15,13 +15,19 @@ EXTENSIONS = $(addprefix $(I_DIR)/,$(EXT))
 EXT =   CustomException.hpp \
         IOperand.hpp \
         Operand.hpp \
-        FOperand.hpp
+        FOperand.hpp \
+        Lexer.hpp \
+        Parser.hpp \
+        AWM.hpp
 
 HEADERS =-I$(I_DIR)
 
 SOURCES =   main.cpp \
             CustomException.cpp \
-            FOperand.cpp
+            FOperand.cpp \
+            AWM.cpp \
+            Lexer.cpp \
+            Parser.cpp
 
 
 SRCS = $(addprefix $(S_DIR)/,$(SOURCES))

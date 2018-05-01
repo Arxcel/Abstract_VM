@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+../inc/AWM.hpp
+string
+-
+Parser.hpp
+../inc/Parser.hpp
+Lexer.hpp
+../inc/Lexer.hpp
+
 ../inc/CustomException.hpp
 exception
 -
@@ -13,12 +21,16 @@ string
 -
 
 ../inc/FOperand.hpp
-Operand.hpp
-../inc/Operand.hpp
+IOperand.hpp
+../inc/IOperand.hpp
 map
 -
 
 ../inc/IOperand.hpp
+string
+-
+
+../inc/Lexer.hpp
 string
 -
 
@@ -37,20 +49,50 @@ cmath
 -
 CustomException.hpp
 ../inc/CustomException.hpp
-IOperand.hpp
-../inc/IOperand.hpp
-
-/Users/arxcel/Documents/projects/Abstract_VM/src/CustomException.cpp
-CustomException.hpp
-/Users/arxcel/Documents/projects/Abstract_VM/src/CustomException.hpp
-
-/Users/arxcel/Documents/projects/Abstract_VM/src/FOperand.cpp
 FOperand.hpp
-/Users/arxcel/Documents/projects/Abstract_VM/src/FOperand.hpp
+../inc/FOperand.hpp
 
-/Users/arxcel/Documents/projects/Abstract_VM/src/main.cpp
+../inc/Parser.hpp
+
+/Users/vkozlov/Documents/avm/src/AWM.cpp
+AWM.hpp
+/Users/vkozlov/Documents/avm/src/AWM.hpp
+fstream
+-
+iostream
+-
+sstream
+-
+CustomException.hpp
+/Users/vkozlov/Documents/avm/src/CustomException.hpp
+
+/Users/vkozlov/Documents/avm/src/CustomException.cpp
+CustomException.hpp
+/Users/vkozlov/Documents/avm/src/CustomException.hpp
+
+/Users/vkozlov/Documents/avm/src/FOperand.cpp
+FOperand.hpp
+/Users/vkozlov/Documents/avm/src/FOperand.hpp
+Operand.hpp
+/Users/vkozlov/Documents/avm/src/Operand.hpp
+
+/Users/vkozlov/Documents/avm/src/Lexer.cpp
+Lexer.hpp
+/Users/vkozlov/Documents/avm/src/Lexer.hpp
+CustomException.hpp
+/Users/vkozlov/Documents/avm/src/CustomException.hpp
+
+/Users/vkozlov/Documents/avm/src/Parser.cpp
+Parser.hpp
+/Users/vkozlov/Documents/avm/src/Parser.hpp
+
+/Users/vkozlov/Documents/avm/src/main.cpp
 iostream
 -
 Operand.hpp
-/Users/arxcel/Documents/projects/Abstract_VM/src/Operand.hpp
+/Users/vkozlov/Documents/avm/src/Operand.hpp
+AWM.hpp
+/Users/vkozlov/Documents/avm/src/AWM.hpp
+Lexer.hpp
+/Users/vkozlov/Documents/avm/src/Lexer.hpp
 
