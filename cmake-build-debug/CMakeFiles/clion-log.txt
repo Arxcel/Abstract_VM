@@ -1,0 +1,4 @@
+/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/arxcel/Documents/projects/Abstract_VM
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug
