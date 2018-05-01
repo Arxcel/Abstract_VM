@@ -50,7 +50,7 @@ std::string AWM::readFromStdI() const
 	std::stringstream ss;
 	while(true) {
 		getline(std::cin, line);
-		if (line.find(";;") != std::string::npos)
+		if (line == ";;")
 			break ;
 		ss << _lexer.validateLine(line) << std::endl;
 	}
