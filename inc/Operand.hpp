@@ -159,6 +159,16 @@ public:
 		}
 		return _fop->createOperand(_type, ss.str());
 	}
+	bool operator==(IOperand const & rhs ) const {
+		if (getType() != rhs.getType())
+			return false;
+		if (getPrecision() != rhs.getPrecision())
+			return false;
+		if (toString() != rhs.toString())
+			return false;
+		return true;
+	}
+
 	std::string const & toString() const {
 		return _str;
 	};

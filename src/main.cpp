@@ -14,6 +14,7 @@ int main(int ac, char *av[]) {
 			throw CustomException("Too many arguments!");
 		}
 		awm->start();
+		delete awm;
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
