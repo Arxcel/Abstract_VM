@@ -20,21 +20,29 @@ public:
 	Operand(std::string const &val, eOperandType t, int precision, FOperand const *fop): _type(t), _precision(precision), _fop(fop) {
 		std::stringstream ss;
 		if (t < Float) {
-			long long v = std::stoll(val);
-			if (isOverflow<long long>(_type, v)) {
+			try {
+				long long v = std::stoll(val);
+				if (isOverflow<long long>(_type, v)) {
+					throw std::exception();
+				}
+				_value = static_cast<T>(v);
+				ss << std::setprecision(precision) << v;
+				_str = ss.str();
+			} catch (std::exception &e) {
 				throw CustomException("Constructor. Int overflow or underflow!");
 			}
-			_value = static_cast<T>(v);
-			ss << std::setprecision(precision) << v;
-			_str = ss.str();
 		} else {
-			long double v = std::stod(val);
-			if (isOverflow<long double>(_type, v)) {
+			try {
+				long double v = std::stod(val);
+				if (isOverflow<long double>(_type, v)) {
+					throw std::exception();
+				}
+				_value = static_cast<T>(v);
+				ss << std::setprecision(precision) << v;
+				_str = ss.str();
+			} catch (std::exception &e) {
 				throw CustomException("Constructor. Float/double overflow or underflow!");
 			}
-			_value = static_cast<T>(v);
-			ss << std::setprecision(precision) << v;
-			_str = ss.str();
 		}
 	};
 	int getPrecision() const {

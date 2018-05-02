@@ -94,7 +94,8 @@ void AWM::mAdd(IOperand const*){
 	a = _data.back();
 	_data.pop_back();
 	b = _data.back();
-	_data.pop_back();	_data.push_back(*a + *b);
+	_data.pop_back();
+	_data.push_back(*a + *b);
 	delete a;
 	delete b;
 };
@@ -107,7 +108,7 @@ void AWM::mSub(IOperand const*){
 	_data.pop_back();
 	b = _data.back();
 	_data.pop_back();
-	_data.push_back(*a - *b);
+	_data.push_back(*b - *a);
 	delete a;
 	delete b;
 };
@@ -120,7 +121,7 @@ void AWM::mDiv(IOperand const*){
 	_data.pop_back();
 	b = _data.back();
 	_data.pop_back();
-	_data.push_back(*a / *b);
+	_data.push_back(*b / *a);
 	delete a;
 	delete b;
 };
@@ -133,15 +134,15 @@ void AWM::mMod(IOperand const*){
 	_data.pop_back();
 	b = _data.back();
 	_data.pop_back();
-	_data.push_back(*a % *b);
+	_data.push_back(*b % *a);
 	delete a;
 	delete b;
 };
 void AWM::mPrint(IOperand const*){
-	if (!(_data.back()->getType() != Int8))
+	if ((_data.back()->getType() != Int8))
 		throw CustomException("Assertion failed!");
 	auto a = std::stoll(_data.back()->toString());
-	std::cout << static_cast<char>(a) << std::endl;
+	std::cout << static_cast<char>(a);
 };
 
 void AWM::mExit (IOperand const*){};

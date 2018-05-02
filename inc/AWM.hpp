@@ -10,6 +10,7 @@
 #include "Parser.hpp"
 #include "Lexer.hpp"
 #include <vector>
+#include <stack>
 #include <map>
 
 class AWM {
@@ -44,7 +45,7 @@ private:
 	Parser													_parser;
 	Lexer													_lexer;
 	std::vector<std::pair<std::string, IOperand const *>>	_instructions;
-	std::map<std::string, void (AWM::*)(IOperand const *)> _actionMap;
+	std::map<std::string, void (AWM::*)(IOperand const *)>	_actionMap;
 	std::vector<IOperand const *>							_data;
 };
 
