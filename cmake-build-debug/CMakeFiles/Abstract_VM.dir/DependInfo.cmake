@@ -4,12 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/vkozlov/Documents/avm/src/AWM.cpp" "/Users/vkozlov/Documents/avm/cmake-build-debug/CMakeFiles/Abstract_VM.dir/src/AWM.cpp.o"
-  "/Users/vkozlov/Documents/avm/src/CustomException.cpp" "/Users/vkozlov/Documents/avm/cmake-build-debug/CMakeFiles/Abstract_VM.dir/src/CustomException.cpp.o"
-  "/Users/vkozlov/Documents/avm/src/FOperand.cpp" "/Users/vkozlov/Documents/avm/cmake-build-debug/CMakeFiles/Abstract_VM.dir/src/FOperand.cpp.o"
-  "/Users/vkozlov/Documents/avm/src/Lexer.cpp" "/Users/vkozlov/Documents/avm/cmake-build-debug/CMakeFiles/Abstract_VM.dir/src/Lexer.cpp.o"
-  "/Users/vkozlov/Documents/avm/src/Parser.cpp" "/Users/vkozlov/Documents/avm/cmake-build-debug/CMakeFiles/Abstract_VM.dir/src/Parser.cpp.o"
-  "/Users/vkozlov/Documents/avm/src/main.cpp" "/Users/vkozlov/Documents/avm/cmake-build-debug/CMakeFiles/Abstract_VM.dir/src/main.cpp.o"
+  "/Users/arxcel/Documents/projects/Abstract_VM/src/AWM.cpp" "/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/src/AWM.cpp.o"
+  "/Users/arxcel/Documents/projects/Abstract_VM/src/CustomException.cpp" "/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/src/CustomException.cpp.o"
+  "/Users/arxcel/Documents/projects/Abstract_VM/src/FOperand.cpp" "/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/src/FOperand.cpp.o"
+  "/Users/arxcel/Documents/projects/Abstract_VM/src/Lexer.cpp" "/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/src/Lexer.cpp.o"
+  "/Users/arxcel/Documents/projects/Abstract_VM/src/Parser.cpp" "/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/src/Parser.cpp.o"
+  "/Users/arxcel/Documents/projects/Abstract_VM/src/main.cpp" "/Users/arxcel/Documents/projects/Abstract_VM/cmake-build-debug/CMakeFiles/Abstract_VM.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

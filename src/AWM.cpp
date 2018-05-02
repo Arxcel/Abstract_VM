@@ -6,8 +6,14 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+typedef std::pair<std::string, IOperand const*> pairInst;
 AWM::AWM(){};
-AWM::~AWM(){};
+AWM::~AWM(){
+	for(auto i = _instructions.begin(); i != _instructions.end(); i++) {
+		if ((*i).second)
+			delete (*i).second;
+	}
+};
 AWM::AWM(AWM const &){};
 AWM &AWM::operator=(AWM const &){ return *this;};
 AWM::AWM(bool rFF, bool eTF, std::string const &eP, std::string const &fP):
@@ -17,17 +23,24 @@ void AWM::start() {
 	std::string instructions;
 	instructions = readInstructions();
 	parseInstructions(instructions);
+	for (auto i = _instructions.begin(); i != _instructions.end(); i++)
+	{
+		if ((*i).first == "push" || (*i).first == "assert")
+			std::cout << (*i).first << " " << (*i).second->getType() << " " << (*i).second->toString() << std::endl;
+		else
+			std::cout << (*i).first << std::endl;
+	}
 };
 
 void AWM::parseInstructions(std::string const &instructions) {
 	std::stringstream ss(instructions);
 	std::string line;
 	while (getline(ss, line)){
-		std::stringstream strS(line);
-		std::string word;
-		while (getline(strS, word, ' ')) {
-				std::cout << word << std::endl;
-		}
+		if (std::regex_match(line, std::regex(R"(^;.*$)")) ||
+			std::regex_match(line, std::regex(R"(^\s*$)")))
+			continue ;
+		IOperand const *tmp = _parser.parseInstruction(line);
+		_instructions.emplace_back(pairInst(line, tmp));
 	}
 };
 

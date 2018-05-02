@@ -31,8 +31,8 @@ private:
 	bool											_readFromFile;
 	Parser											_parser;
 	Lexer											_lexer;
-	std::vector<std::pair<std::string, IOperand *>>	_instructions;
-	std::vector<IOperand>							_data;
+	std::vector<std::pair<std::string, IOperand const *>>	_instructions;
+	std::vector<IOperand*>							_data;
 };
 
 
