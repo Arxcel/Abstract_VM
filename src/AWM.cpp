@@ -7,7 +7,7 @@
 #include <iostream>
 
 typedef std::pair<std::string, IOperand const*> pairInst;
-AWM::AWM() :_logPath("./info.log"){
+AWM::AWM() :_logPath("./info.log"), _exitPresent(false){
 	if (!_logPath.is_open()) {
 		throw CustomException(std::string("Error: ") + std::strerror(errno));
 	}
@@ -23,7 +23,7 @@ AWM::~AWM(){
 		system("rm -rf info.log");
 };
 
-AWM::AWM(AWM const &):_logPath("./info.log") {
+AWM::AWM(AWM const &):_logPath("./info.log"), _exitPresent(false) {
 	if (!_logPath.is_open()) {
 		throw CustomException(std::string("Error: ") + std::strerror(errno));
 	}
@@ -32,7 +32,7 @@ AWM::AWM(AWM const &):_logPath("./info.log") {
 AWM &AWM::operator=(AWM const &){ return *this;};
 
 AWM::AWM(bool rFF, bool eTF, std::string const &fP):
-_filePath(fP), _logPath("./info.log"), _logToFile(eTF), _readFromFile(rFF) {
+_filePath(fP), _logPath("./info.log"), _logToFile(eTF), _readFromFile(rFF), _exitPresent(false) {
 	if (!_logPath.is_open()) {
 		throw CustomException(std::string("Error: ") + std::strerror(errno));
 	}
@@ -46,6 +46,10 @@ _filePath(fP), _logPath("./info.log"), _logToFile(eTF), _readFromFile(rFF) {
 	_actionMap.insert(mapE("mul", &AWM::mMul));
 	_actionMap.insert(mapE("div", &AWM::mDiv));
 	_actionMap.insert(mapE("mod", &AWM::mMod));
+	_actionMap.insert(mapE("min", &AWM::mMin));
+	_actionMap.insert(mapE("max", &AWM::mMax));
+	_actionMap.insert(mapE("avg", &AWM::mAvg));
+	_actionMap.insert(mapE("pow", &AWM::mPow));
 	_actionMap.insert(mapE("print", &AWM::mPrint));
 	_actionMap.insert(mapE("exit", &AWM::mExit));
 };
@@ -64,8 +68,13 @@ void AWM::start() {
 
 void AWM::runAWM() {
 	for (auto i = _instructions.begin(); i != _instructions.end(); i++) {
-		auto f = _actionMap.at((*i).first);
-		((*this.*f)((*i).second));
+		if (!_exitPresent) {
+			std::string cmd = (*i).first;
+			auto f = _actionMap.at((*i).first);
+			((*this.*f)((*i).second));
+		} else {
+			throw CustomException("Commands after exit!");
+		}
 	}
 };
 
@@ -74,11 +83,13 @@ void AWM::mPush(IOperand const*d){
 };
 
 void AWM::mDump(IOperand const*){
+	const std::string green("\033[0;32m");
+	const std::string reset("\033[0m");
 	for (auto i = _data.rbegin(); i!=_data.rend(); i++) {
 		if (_logToFile)
 			_logPath << (*i)->toString() << std::endl;
 		else
-			std::cout << (*i)->toString() << std::endl;
+			std::cout << green << (*i)->toString() << reset << std::endl;
 	}
 };
 
@@ -164,16 +175,76 @@ void AWM::mMod(IOperand const*){
 };
 
 void AWM::mPrint(IOperand const*){
+	const std::string green("\033[0;32m");
+	const std::string reset("\033[0m");
 	if ((_data.back()->getType() != Int8))
 		throw CustomException("Assertion failed!");
 	auto a = std::stoll(_data.back()->toString());
 	if (_logToFile)
 		_logPath << static_cast<char>(a);
 	else
-		std::cout << static_cast<char>(a);
+		std::cout << green << static_cast<char>(a) << reset;
 };
 
-void AWM::mExit (IOperand const*){};
+void AWM::mExit (IOperand const*){
+	_exitPresent = true;
+};
+
+void  AWM::mMin(IOperand const*) {
+	IOperand const *a;
+	IOperand const *b;
+	if (_data.size() < 2)
+		throw CustomException("Not enough values in stack for arithmetic.");
+	a = _data.back();
+	_data.pop_back();
+	b = _data.back();
+	_data.pop_back();
+	_data.push_back(*b < *a);
+	delete a;
+	delete b;
+};
+
+void  AWM::mMax(IOperand const*){
+	IOperand const *a;
+	IOperand const *b;
+	if (_data.size() < 2)
+		throw CustomException("Not enough values in stack for arithmetic.");
+	a = _data.back();
+	_data.pop_back();
+	b = _data.back();
+	_data.pop_back();
+	_data.push_back(*b > *a);
+	delete a;
+	delete b;
+};
+
+void  AWM::mAvg(IOperand const*){
+	IOperand const *a;
+	IOperand const *b;
+	if (_data.size() < 2)
+		throw CustomException("Not enough values in stack for arithmetic.");
+	a = _data.back();
+	_data.pop_back();
+	b = _data.back();
+	_data.pop_back();
+	_data.push_back(*b >= *a);
+	delete a;
+	delete b;
+};
+
+void  AWM::mPow(IOperand const*){
+	IOperand const *a;
+	IOperand const *b;
+	if (_data.size() < 2)
+		throw CustomException("Not enough values in stack for arithmetic.");
+	a = _data.back();
+	_data.pop_back();
+	b = _data.back();
+	_data.pop_back();
+	_data.push_back(*b <= *a);
+	delete a;
+	delete b;
+};
 
 void AWM::parseInstructions(std::string const &instructions) {
 	std::stringstream ss(instructions);

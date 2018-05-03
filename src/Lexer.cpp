@@ -15,6 +15,10 @@ Lexer::Lexer(){
 	_patterns.emplace_back(std::regex(R"(^\s*mul\s*(|;.*)$)"));
 	_patterns.emplace_back(std::regex(R"(^\s*div\s*(|;.*)$)"));
 	_patterns.emplace_back(std::regex(R"(^\s*mod\s*(|;.*)$)"));
+	_patterns.emplace_back(std::regex(R"(^\s*min\s*(|;.*)$)"));
+	_patterns.emplace_back(std::regex(R"(^\s*max\s*(|;.*)$)"));
+	_patterns.emplace_back(std::regex(R"(^\s*avg\s*(|;.*)$)"));
+	_patterns.emplace_back(std::regex(R"(^\s*pow\s*(|;.*)$)"));
 	_patterns.emplace_back(std::regex(R"(^\s*print\s*(|;.*)$)"));
 	_patterns.emplace_back(std::regex(R"(^\s*exit\s*(|;.*)$)"));
 	_patterns.emplace_back(std::regex(R"(^\s*$)"));

@@ -38,12 +38,19 @@ private:
 	void mSub(IOperand const*);
 	void mDiv(IOperand const*);
 	void mMod(IOperand const*);
+
+	void mMin(IOperand const*);
+	void mMax(IOperand const*);
+	void mAvg(IOperand const*);
+	void mPow(IOperand const*);
+
 	void parseInstructions(std::string const &instructions);
 	AWM &operator=(AWM const &);
 	std::string												_filePath;
 	std::ofstream											_logPath;
 	bool													_logToFile;
 	bool													_readFromFile;
+	bool 													_exitPresent;
 	Parser													_parser;
 	Lexer													_lexer;
 	std::vector<std::pair<std::string, IOperand const *>>	_instructions;

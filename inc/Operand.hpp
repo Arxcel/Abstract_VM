@@ -167,6 +167,79 @@ public:
 		}
 		return _fop->createOperand(_type, ss.str());
 	}
+
+	IOperand const * operator<( IOperand const & rhs ) const {
+		eOperandType	t;
+		int				p;
+		getTypePrec(t, p, rhs);
+		std::stringstream ss;
+		if (t < Float) {
+			long long min = std::stoll(_str) > std::stoll(rhs.toString()) ? std::stoll(rhs.toString()) : std::stoll(_str);
+			ss << std::setprecision(p) << min;
+		} else {
+			long double min = std::stod(_str) > std::stod(rhs.toString()) ? std::stod(rhs.toString()) : std::stod(_str);
+			ss << std::setprecision(p) << min;
+		}
+		return _fop->createOperand(_type, ss.str());
+	}
+
+	IOperand const * operator>( IOperand const & rhs ) const {
+		eOperandType	t;
+		int				p;
+		getTypePrec(t, p, rhs);
+		std::stringstream ss;
+		if (t < Float) {
+			long long max = std::stoll(_str) < std::stoll(rhs.toString()) ? std::stoll(rhs.toString()) : std::stoll(_str);
+			ss << std::setprecision(p) << max;
+		} else {
+			long double max = std::stod(_str) < std::stod(rhs.toString()) ? std::stod(rhs.toString()) : std::stod(_str);
+			ss << std::setprecision(p) << max;
+		}
+		return _fop->createOperand(_type, ss.str());
+	}
+
+	virtual IOperand const * operator>=( IOperand const & rhs ) const{
+		eOperandType	t;
+		int				p;
+		getTypePrec(t, p, rhs);
+		std::stringstream ss;
+		if (t < Float) {
+			long long res = (std::stoll(_str) + std::stoll(rhs.toString())) / 2;
+			if (isOverflow(_type, res)) {
+				throw CustomException("Sum. Int overflow or underflow!");
+			}
+			ss << std::setprecision(p) << res;
+		} else {
+			long double res = (std::stod(_str) + std::stod(rhs.toString())) / 2;
+			if (isOverflow(_type, res)) {
+				throw CustomException("Sum. Float/double overflow or underflow!");
+			}
+			ss << std::setprecision(p) << res;
+		}
+		return _fop->createOperand(_type, ss.str());
+	};
+
+	virtual IOperand const * operator<=( IOperand const & rhs ) const {
+		eOperandType	t;
+		int				p;
+		getTypePrec(t, p, rhs);
+		std::stringstream ss;
+		if (t < Float) {
+			long double res = pow(std::stoll(_str), std::stoll(rhs.toString()));
+			if (isOverflow(_type, res)) {
+				throw CustomException("Multiply. Int overflow or underflow!");
+			}
+			ss << std::setprecision(p) << res;
+		} else {
+			long double res = pow(std::stod(_str), std::stod(rhs.toString()));
+			if (isOverflow(_type, res)) {
+				throw CustomException("Multiply. Float/double overflow or underflow!");
+			}
+			ss << std::setprecision(p) << res;
+		}
+		return _fop->createOperand(_type, ss.str());
+	};
+
 	bool operator==(IOperand const & rhs ) const {
 		if (getType() != rhs.getType())
 			return false;

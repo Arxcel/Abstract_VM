@@ -3,6 +3,8 @@
 #include "AWM.hpp"
 
 int main(int ac, char *av[]) {
+	const std::string red("\033[0;31m");
+	const std::string reset("\033[0m");
 	AWM *awm = nullptr;
 	bool t = false;
 	try {
@@ -31,14 +33,14 @@ int main(int ac, char *av[]) {
 		if (t){
 			awm->getLogPath() << e.what() << std::endl;
 		} else {
-			std::cout << e.what() << std::endl;
+			std::cout << red << e.what() <<  reset << std::endl;
 		}
 		delete awm;
 	} catch (std::exception &e) {
 		if (t){
 			awm->getLogPath() << e.what() << std::endl;
 		} else {
-			std::cout << e.what() << std::endl;
+			std::cout << red << e.what() <<  reset << std::endl;
 		}
 		delete awm;
 	}

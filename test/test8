@@ -1,0 +1,7 @@
+push int32(2)
+push int32(3)
+pow ;poney
+push int8(127)
+max
+dump
+exit

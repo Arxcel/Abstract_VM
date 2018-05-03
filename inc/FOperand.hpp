@@ -7,6 +7,14 @@
 #include "IOperand.hpp"
 #include <map>
 
+enum ePrecision {
+	int8Precision=0,
+	int16Precision=0,
+	int32Precision=0,
+	floatPrecision=7,
+	doublePrecision=14,
+};
+
 class FOperand {
 public:
 	FOperand();

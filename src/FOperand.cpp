@@ -32,17 +32,17 @@ IOperand const *FOperand::createOperand(eOperandType const &t, std::string val) 
 }
 
 IOperand const *FOperand::createInt8(std::string const &v) const {
-	return new Operand<char>(v, Int8, 0, this);
+	return new Operand<char>(v, Int8, int8Precision, this);
 }
 IOperand const *FOperand::createInt16(std::string const &v) const {
-	return new Operand<short int>(v, Int16, 0, this);
+	return new Operand<short int>(v, Int16, int16Precision, this);
 }
 IOperand const *FOperand::createInt32(std::string const &v) const {
-	return new Operand<int>(v, Int32, 0, this);
+	return new Operand<int>(v, Int32, int32Precision, this);
 }
 IOperand const *FOperand::createFloat(std::string const &v) const {
-	return new Operand<float>(v, Float, 7, this);
+	return new Operand<float>(v, Float, floatPrecision, this);
 }
 IOperand const *FOperand::createDouble(std::string const &v) const {
-	return new Operand<double>(v, Double, 14, this);
+	return new Operand<double>(v, Double, doublePrecision, this);
 }
