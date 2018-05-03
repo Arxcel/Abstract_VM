@@ -5,19 +5,37 @@
 #include "AWM.hpp"
 #include <fstream>
 #include <iostream>
-#include <sstream>
 
 typedef std::pair<std::string, IOperand const*> pairInst;
-AWM::AWM(){};
+AWM::AWM() :_logPath("./info.log"){
+	if (!_logPath.is_open()) {
+		throw CustomException(std::string("Error: ") + std::strerror(errno));
+	}
+};
+
 AWM::~AWM(){
 	for (auto i = _data.begin(); i!=_data.end(); i++) {
 		delete (*i);
 	}
+	if (_logPath.is_open())
+		_logPath.close();
+	if (!_logToFile)
+		system("rm -rf info.log");
 };
-AWM::AWM(AWM const &){};
+
+AWM::AWM(AWM const &):_logPath("./info.log") {
+	if (!_logPath.is_open()) {
+		throw CustomException(std::string("Error: ") + std::strerror(errno));
+	}
+};
+
 AWM &AWM::operator=(AWM const &){ return *this;};
-AWM::AWM(bool rFF, bool eTF, std::string const &eP, std::string const &fP):
-_filePath(fP), _errPath(eP), _errToFile(eTF), _readFromFile(rFF) {
+
+AWM::AWM(bool rFF, bool eTF, std::string const &fP):
+_filePath(fP), _logPath("./info.log"), _logToFile(eTF), _readFromFile(rFF) {
+	if (!_logPath.is_open()) {
+		throw CustomException(std::string("Error: ") + std::strerror(errno));
+	}
 	typedef std::pair<std::string, void (AWM::*)(IOperand const*)> mapE;
 	_actionMap.insert(mapE("push", &AWM::mPush));
 	_actionMap.insert(mapE("pop", &AWM::mPop));
@@ -49,7 +67,7 @@ void AWM::runAWM() {
 		auto f = _actionMap.at((*i).first);
 		((*this.*f)((*i).second));
 	}
-}
+};
 
 void AWM::mPush(IOperand const*d){
 	_data.emplace_back(d);
@@ -57,7 +75,10 @@ void AWM::mPush(IOperand const*d){
 
 void AWM::mDump(IOperand const*){
 	for (auto i = _data.rbegin(); i!=_data.rend(); i++) {
-		std::cout << (*i)->toString() << std::endl;
+		if (_logToFile)
+			_logPath << (*i)->toString() << std::endl;
+		else
+			std::cout << (*i)->toString() << std::endl;
 	}
 };
 
@@ -99,6 +120,7 @@ void AWM::mAdd(IOperand const*){
 	delete a;
 	delete b;
 };
+
 void AWM::mSub(IOperand const*){
 	IOperand const *a;
 	IOperand const *b;
@@ -112,6 +134,7 @@ void AWM::mSub(IOperand const*){
 	delete a;
 	delete b;
 };
+
 void AWM::mDiv(IOperand const*){
 	IOperand const *a;
 	IOperand const *b;
@@ -125,6 +148,7 @@ void AWM::mDiv(IOperand const*){
 	delete a;
 	delete b;
 };
+
 void AWM::mMod(IOperand const*){
 	IOperand const *a;
 	IOperand const *b;
@@ -138,11 +162,15 @@ void AWM::mMod(IOperand const*){
 	delete a;
 	delete b;
 };
+
 void AWM::mPrint(IOperand const*){
 	if ((_data.back()->getType() != Int8))
 		throw CustomException("Assertion failed!");
 	auto a = std::stoll(_data.back()->toString());
-	std::cout << static_cast<char>(a);
+	if (_logToFile)
+		_logPath << static_cast<char>(a);
+	else
+		std::cout << static_cast<char>(a);
 };
 
 void AWM::mExit (IOperand const*){};
@@ -161,13 +189,13 @@ void AWM::parseInstructions(std::string const &instructions) {
 
 std::string AWM::readInstructions() {
 	std::string instructions;
-	if (_readFromFile && !_errToFile) {
+	if (_readFromFile && !_logToFile) {
 		instructions = readFromFile(_filePath);
 	} else {
 		instructions = readFromStdI();
 	}
 	return instructions;
-}
+};
 
 std::string AWM::readFromFile(std::string const &path) const {
 	std::string line;
@@ -195,3 +223,7 @@ std::string AWM::readFromStdI() const {
 	}
 	return ss.str();
 };
+
+std::ofstream &AWM::getLogPath() {
+	return _logPath;
+}

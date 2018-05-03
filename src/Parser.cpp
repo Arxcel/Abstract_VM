@@ -25,7 +25,6 @@ IOperand const *Parser::parseInstruction(std::string &instruction) {
 	std::stringstream strS(instruction);
 	std::string word;
 
-//	std::cout << instruction << std::endl;
 	getline(strS, word, ' ');
 	instruction = word;
 	if (word != "push" && word != "assert")
@@ -34,6 +33,5 @@ IOperand const *Parser::parseInstruction(std::string &instruction) {
 	type = _inst.at(word);
 	getline(strS, word, ')');
 	value = word;
-//	std::cout << value << std::endl;
 	return _creator.createOperand(type, value);
 };

@@ -12,11 +12,13 @@
 #include <vector>
 #include <stack>
 #include <map>
+#include <fstream>
 
 class AWM {
 public:
-	AWM(bool, bool, std::string const &, std::string const &);
+	AWM(bool, bool, std::string const &);
 	void start();
+	std::ofstream &getLogPath();
 	~AWM();
 private:
 	AWM();
@@ -39,8 +41,8 @@ private:
 	void parseInstructions(std::string const &instructions);
 	AWM &operator=(AWM const &);
 	std::string												_filePath;
-	std::string												_errPath;
-	bool													_errToFile;
+	std::ofstream											_logPath;
+	bool													_logToFile;
 	bool													_readFromFile;
 	Parser													_parser;
 	Lexer													_lexer;

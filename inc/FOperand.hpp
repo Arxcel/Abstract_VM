@@ -4,7 +4,6 @@
 
 #ifndef FOPERAND_HPP
 #define FOPERAND_HPP
-
 #include "IOperand.hpp"
 #include <map>
 

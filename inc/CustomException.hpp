@@ -4,7 +4,6 @@
 
 #ifndef CUSTOMEXCEPTION_HPP
 #define CUSTOMEXCEPTION_HPP
-
 #include <exception>
 #include <string>
 

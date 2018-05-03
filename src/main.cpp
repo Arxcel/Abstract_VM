@@ -1,28 +1,46 @@
 #include <iostream>
 #include "Operand.hpp"
 #include "AWM.hpp"
-#include "Lexer.hpp"
 
 int main(int ac, char *av[]) {
+	AWM *awm = nullptr;
+	bool t = false;
 	try {
-		AWM *awm;
-		if (ac == 1) {
-			awm = new AWM(false, false, "./errors.log", "");
-		} else if (ac == 2) {
-			awm = new AWM(true, false, "./errors.log", av[1]);
+			if (ac == 1) {
+				awm = new AWM(false, false, "");
+			} else if (ac == 2) {
+				std::string tmp(av[1]);
+				if (tmp == "-l") {
+					awm = new AWM(false, true, "");
+					t = true;
+				} else
+					awm = new AWM(true, false, av[1]);
+			} else if (ac == 3) {
+				std::string tmp(av[1]);
+				if (tmp == "-l") {
+					awm = new AWM(true, true, av[2]);
+					t = true;
+				} else
+					throw CustomException("Not valid option!");
+			} else {
+				throw CustomException("Too many arguments!");
+			}
+			awm->start();
+			delete awm;
+	} catch (CustomException &e) {
+		if (t){
+			awm->getLogPath() << e.what() << std::endl;
 		} else {
-			throw CustomException("Too many arguments!");
+			std::cout << e.what() << std::endl;
 		}
-		awm->start();
 		delete awm;
 	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+		if (t){
+			awm->getLogPath() << e.what() << std::endl;
+		} else {
+			std::cout << e.what() << std::endl;
+		}
+		delete awm;
 	}
-//	std::cout << INT8_MIN << ' ' << INT8_MAX << std::endl;
-//	std::cout << INT16_MIN << ' ' << INT16_MAX << std::endl;
-//	std::cout << INT32_MIN << ' ' << INT32_MAX << std::endl;
-//	std::cout << FLT_MIN << ' ' << FLT_MIN << std::endl;
-//	std::cout << DBL_MIN << ' ' << DBL_MIN << std::endl;
-
 	return 0;
 }
