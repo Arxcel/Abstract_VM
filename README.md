@@ -1,11 +1,10 @@
 # Abstract_VM
 The first C++ project of the  UNIT Factory (School 42) study program.
 
-*Read this in other languages: [English](README.md), [Русский](README-ru.md).*
-
 #### Table of Contents
-- [Intro] (#intro)
-- [Description] (#description)
+- [Intro](#intro)
+- [Description](#description)
+- [Execution](#execution)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Author](#author)
@@ -73,6 +72,49 @@ When a computation involves two operands of different types, the value returned 
 the type of the more precise operand. Please do note that because of the extensibility of
 the machine, the precision question is not a trivial one. This is covered more in details
 later in this document.
+
+## Execution
+
+__AbstractVM__ is able to run programs from a file passed as a parameter and from
+the standard input. When reading from the standard input, the end of the program is
+indicated by the special symbol ";;" otherwise absent.
+
+#Examples:
+
+```bash
+$ cat test/test0
+push int32(42)
+push int32(33)
+add ;poney
+push float(44.55)
+mul
+push double(42.42) ;commentaire de ouf
+push int32(42)
+dump
+pop
+assert double(42.42)
+exit%
+
+$ ./avm test/test0
+42
+42.42
+3341.25
+```
+
+```bash
+$>./avm
+push int32(2)
+push int32(3)
+add
+assert int32(5)
+dump
+exit
+;;
+5
+```
+
+
+
 ## Requirements
 
 Mac OS El Capitan / Sierra / High Sierra
