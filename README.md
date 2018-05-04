@@ -17,7 +17,7 @@ __AbstractVM__ is a machine that uses a stack to compute simple arithmetic expre
 
 As for any assembly language, the language of __AbstractVM__ is composed of a series of instructions, with one instruction per line. However, __AbstractVM__’s assembly language has a limited type system, which is a major difference from other real world assembly languages.
 
-Additional flag: '-l' can be used to store result of the program execution is a file.
+Additional flag: '-l' can be used to store result of the program execution in a file 'info.log'.
 
 Comments: Comments start with a ’;’ and finish with a newline. A comment can be either at the start of a line, or after an instruction.
 
