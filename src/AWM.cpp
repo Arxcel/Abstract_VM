@@ -260,7 +260,7 @@ void AWM::parseInstructions(std::string const &instructions) {
 
 std::string AWM::readInstructions() {
 	std::string instructions;
-	if (_readFromFile && !_logToFile) {
+	if (_readFromFile) {
 		instructions = readFromFile(_filePath);
 	} else {
 		instructions = readFromStdI();
