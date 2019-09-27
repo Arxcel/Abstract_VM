@@ -68,7 +68,7 @@ __AbstractVM__ is able to run programs from a file passed as a parameter and fro
 
 ### Examples ###
 
-```
+```bash
 $>cat test/test0
 push int32(42)
 push int32(33)
@@ -87,7 +87,7 @@ $>./avm test/test0
 3341.25
 ```
 
-```
+```bash
 $>./avm
 push int32(2)
 push int32(3)
@@ -107,8 +107,11 @@ Mac OS El Capitan / Sierra / High Sierra
 
 ```bash
 git clone https://github.com/Arxcel/Abstract_VM.git ~/ft_awm
-cd ~/ft_awm
-make
+mkdir ~ft_awm/build
+cd ~/ft_awm/build
+cmake ..
+cmake --build . -- -j$(nproc)
+./awm
 ```
 ## Author
 
