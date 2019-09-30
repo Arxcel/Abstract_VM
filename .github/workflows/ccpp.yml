@@ -17,5 +17,5 @@ jobs:
         mkdir build
         cd build
         cmake ..
-        exit 1
+        exit 0
         cmake --build . -- -j
