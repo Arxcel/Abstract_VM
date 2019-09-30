@@ -1,7 +1,7 @@
 name: C/C++ CI
 
-on: push
-
+on: 
+  [push, pull_request]
 jobs:
   build:
     name: Build project for ${{ matrix.os }}
@@ -12,9 +12,17 @@ jobs:
         
     steps:
     - uses: actions/checkout@v1
-    - name: configure && build
+    - name: configure
       run: |
         mkdir build
         cd build
         cmake ..
+    - name: build
+      run: |
+        cd build
         cmake --build . -- -j
+    - name: test
+      run: |
+        cd build
+        ctest
+
